@@ -29,6 +29,7 @@ public class DatePickDialog extends Dialog implements OnChangeLisener {
     private String title;
     private String format;
     private DateType type = DateType.TYPE_ALL;
+    private String defSelectedDate;
 
     //开始时间
     private Date startDate = new Date();
@@ -43,12 +44,16 @@ public class DatePickDialog extends Dialog implements OnChangeLisener {
 
     //设置标题
     public void setTitle(String title) {
-       this.title=title;
+        this.title = title;
     }
 
     //设置模式
     public void setType(DateType type) {
         this.type = type;
+    }
+
+    public void setDefSelectedDate(String defSelectedDate) {
+        this.defSelectedDate = defSelectedDate;
     }
 
     //设置选择日期显示格式，设置显示message,不设置不显示message
@@ -106,6 +111,13 @@ public class DatePickDialog extends Dialog implements OnChangeLisener {
         messgeTv = (TextView) findViewById(R.id.message);
 
         mDatePicker = getDatePicker();
+        if (!TextUtils.isEmpty(defSelectedDate)) {
+            int yy = Integer.parseInt(defSelectedDate.substring(0, 4));
+            int mm = Integer.parseInt(defSelectedDate.substring(5, 7));
+            int dd = Integer.parseInt(defSelectedDate.substring(8));
+            mDatePicker.setSelectedDate(yy, mm, dd);
+        }
+
         this.wheelLayout.addView(mDatePicker);
 
         //setValue

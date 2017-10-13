@@ -46,7 +46,7 @@ class DatePicker extends BaseWheelPick {
 
     public DatePicker(Context context, DateType type) {
         super(context);
-        if(this.type!=null){
+        if (this.type != null) {
             this.type = type;
         }
     }
@@ -134,7 +134,19 @@ class DatePicker extends BaseWheelPick {
         dayView.setCurrentItem(datePicker.findIndextByValue(datePicker.getToady(DatePickerHelper.Type.DAY), dayArr));
         hourView.setCurrentItem(datePicker.findIndextByValue(datePicker.getToady(DatePickerHelper.Type.HOUR), hourArr));
         minuteView.setCurrentItem(datePicker.findIndextByValue(datePicker.getToady(DatePickerHelper.Type.MINUTE), minutArr));
+    }
 
+    /**
+     * 设置默认选中的日期
+     *
+     * @param year  年
+     * @param month 月
+     * @param day   日
+     */
+    public void setSelectedDate(int year, int month, int day) {
+        yearView.setCurrentItem(datePicker.findIndextByValue(year, yearArr));
+        monthView.setCurrentItem(datePicker.findIndextByValue(month, mothArr));
+        dayView.setCurrentItem(datePicker.findIndextByValue(day, dayArr));
     }
 
 
@@ -170,8 +182,8 @@ class DatePicker extends BaseWheelPick {
 
     private void setChangeDaySelect(int year, int moth) {
         dayArr = datePicker.genDay(year, moth);
-        WheelGeneralAdapter adapter= (WheelGeneralAdapter) dayView.getViewAdapter();
-        adapter.setData(convertData(dayView,  dayArr));
+        WheelGeneralAdapter adapter = (WheelGeneralAdapter) dayView.getViewAdapter();
+        adapter.setData(convertData(dayView, dayArr));
 
         int indxt = datePicker.findIndextByValue(selectDay, dayArr);
         if (indxt == -1) {
@@ -227,7 +239,6 @@ class DatePicker extends BaseWheelPick {
         return DateUtils.getDate(year, moth, day, hour, minut);
 
     }
-
 
 
 }
