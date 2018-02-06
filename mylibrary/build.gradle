@@ -8,7 +8,7 @@ apply plugin: 'maven'
 
 android {
     compileSdkVersion project.ext.cfg.compileSdkVersion
-    buildToolsVersion project.ext.cfg.buildToolsVersion
+//    buildToolsVersion project.ext.cfg.buildToolsVersion
 
     defaultConfig {
         minSdkVersion project.ext.cfg.minSdkVersion
@@ -28,12 +28,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project.lbr.appcompat_v7
-    testCompile 'junit:junit:4.12'
+    implementation project.lbr.appcompat_v7
+    testImplementation 'junit:junit:4.12'
 }
 
 
