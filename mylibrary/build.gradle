@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 //apply plugin: 'com.github.dcendents.android-maven'
-apply from: 'http://192.168.200.217:8081/Maven/library.gradle'
+apply from: 'http://192.168.57.129:8081/Maven/library.gradle'
 apply plugin: 'maven'
 
 //apply from: 'nexus-push.gradle'
